@@ -3,11 +3,19 @@ package main
 import(
     "math"
 	"fmt"
+    "net/http"
 )
 func main(){
-	executa_calculo()
-	fmt.Printf("%.1f",executa_calculo())
-	fmt.Printf("Code.education Rocks!!")
+	//executa_calculo()
+	http.HandleFunc("/", index)
+    http.ListenAndServe(":8000", nil) 
+	//fmt.Printf("%.1f",executa_calculo())
+	//fmt.Printf("Code.education Rocks!!")
+}
+func index(w http.ResponseWriter, r *http.Request) {
+	 executa_calculo()
+	 fmt.Printf("Code.education Rocks!!")
+	
 }
 
 func executa_calculo() float64{
