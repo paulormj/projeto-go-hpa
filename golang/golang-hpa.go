@@ -15,7 +15,8 @@ func main(){
 func index(w http.ResponseWriter, r *http.Request) {
 	 executa_calculo()
 	 fmt.Printf("Code.education Rocks!!")
-	
+	 w.WriteHeader(http.StatusOK)
+	 //tpl.Execute(w, data)
 }
 
 func executa_calculo() float64{

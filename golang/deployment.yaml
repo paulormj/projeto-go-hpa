@@ -14,7 +14,7 @@ spec:
     spec: 
       containers:
       - name: go-hpa
-        image: paulormj/go-hpa
+        image: paulormj/go-hpa:0.0.1
         resources:
           limits:
             cpu: 100m
