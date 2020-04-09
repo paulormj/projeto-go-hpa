@@ -1,0 +1,28 @@
+steps:
+  #diretorio golang/main.go
+- id: "Build GO LANG - gcp "
+  name: 'mirror.gcr.io/library/golang'
+  env: ['GO111MODULE=on']
+  args: ['go','build','golang/go-hpa.go']
+
+- id: "test"
+  name: 'mirror.gcr.io/library/golang'
+  #args: ['go','test', '--run', 'golang/main_test.go']
+  #args: ["test","main_test.go"]
+  args: ['go','test', '-v']
+  dir: 'golang/'
+
+- id: "build imagem"
+  name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--build-arg'
+  - 'version=1.1.0'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/go-hpa-image:1.0.0'
+  - 'golang/'
+- name: 'gcr.io/$PROJECT_ID/docker-compose'
+  args: ['version']
+
+images: 
+- 'gcr.io/$PROJECT_ID/go-hpa-image'
