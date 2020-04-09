@@ -25,4 +25,4 @@ steps:
   args: ['version']
 
 images: 
-- 'gcr.io/$PROJECT_ID/go-hpa-image'
+- 'gcr.io/$PROJECT_ID/go-hpa-image'  
